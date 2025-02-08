@@ -16,9 +16,14 @@ return Application::configure(basePath: dirname(__DIR__))
             'http://127.0.0.1:8000/announces/*',
             'http://localhost:8000/announces',
             'http://localhost:8000/announces/*',
+            'https://announceapi-production.up.railway.app/announces/*',
+            'https://announceapi-production.up.railway.app/announces',
             'http://localhost:3000/announces/*',
             'http://localhost:3000/announces',
+            'https://announcereact-a19f76.gitlab.io/announces/*',
+            'https://announcereact-a19f76.gitlab.io/announces',
             'http://localhost:3000',
+
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
