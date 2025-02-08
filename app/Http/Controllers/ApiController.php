@@ -7,7 +7,6 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
-
 class ApiController extends Controller
 {
     /**
@@ -23,46 +22,37 @@ class ApiController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-{
-    $validated = $request->validate([
-        'title' => 'string|required',
-        'description' => 'string|required',
-        'price' => 'string|required',
-        'images' => 'required|max:5',
-        'images.*' =>  'required',
-        'city' => 'string|required',
-        'announceType' => 'required|string',
-    ]);
+    {
+        $validated = $request->validate([
+            'title' => 'string|required',
+            'description' => 'string|required',
+            'price' => 'string|required',
+            'images' => 'required|array|max:5', // Validate as array
+            'images.*' => 'string', // Validate each image as a URL
+            'city' => 'string|required',
+            'announceType' => 'required|string',
+        ]);
 
-    $categoryName = $request->input('announceType');
-    $category = Category::where('title', 'LIKE', $categoryName)->first();
+        $categoryName = $request->input('announceType');
+        $category = Category::where('title', 'LIKE', $categoryName)->first();
 
-    if (!$category) {
-        return response()->json(['error' => 'Category not found'], 404);
-    }
-
-    $uploadedFiles = [];
-    if ($request->hasFile('images')) {
-        foreach ($request->file('images') as $file) {
-            $uploadedFileUrl = Cloudinary::upload($file->getRealPath())->getSecurePath();
-            $uploadedFiles[] = $uploadedFileUrl;
+        if (!$category) {
+            return response()->json(['error' => 'Category not found'], 404);
         }
+
+        $announcement = new Announce([
+            'title' => $validated['title'],
+            'description' => $validated['description'],
+            'price' => $validated['price'],
+            'images' => json_encode($validated['images']), // Store as JSON
+            'category_id' => $category->id,
+            'city' => $validated['city']
+        ]);
+
+        $announcement->save();
+
+        return response()->json(['message' => "Announcement added successfully", 'data' => $announcement], 201);
     }
-
-    $announcement = new Announce([
-        'title' => $validated['title'],
-        'description' => $validated['description'],
-        'price' => $validated['price'],
-        'images' => json_encode($uploadedFiles),
-        'category_id' => $category->id,
-        'city' => $validated['city']
-    ]);
-
-    $announcement->save();
-
-    return response()->json(['message' => "Announcement added successfully", 'data' => $announcement], 201);
-}
-
 
     /**
      * Display the specified resource.

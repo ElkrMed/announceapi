@@ -23,9 +23,9 @@ class AnnounceSeeder extends Seeder
             ['title' => 'Red BMW  Sporty & Stylish', 'description' => ' A stunning red BMW with a powerful engine, sleek design, and top-tier features. Perfect for those who love speed and luxury combined. Comes with premium interiors and advanced technology.', 'price' => '49,999', 'images' => json_encode(['https://res.cloudinary.com/dxuyemo2l/image/upload/v1739030262/accessories5_jvnyzu.png']), 'category_id' => '3', 'city' => 'Tanger'],
             ['title' => 'Blue BMW Elegant Performance', 'description' => 'This blue BMW offers a perfect blend of luxury and performance. Featuring a modern design, smooth handling, and cutting-edge technology, it`\'s built for both comfort and thrill.', 'price' => '52,999', 'images' => json_encode(['https://res.cloudinary.com/dxuyemo2l/image/upload/v1739030265/BMW_blue_cecdvy.jpg']), 'category_id' => '3', 'city' => 'Agadir'],
             ['title' => 'Black BMW Ultimate Luxury', 'description' => 'Experience the sophistication of a black BMW, combining power, elegance, and advanced features. Designed for those who demand the best in automotive excellence.', 'price' => '54,999', 'images' => json_encode(['https://res.cloudinary.com/dxuyemo2l/image/upload/v1739030306/BMW_black_udirck.jpg']), 'category_id' => '3', 'city' => 'Rabat'],
-            ['title' => 'Classic Blue Jeans Comfortable & Stylish', 'description' => 'These premium blue jeans offer a perfect fit with durable fabric, ensuring both comfort and style. Ideal for casual outings or everyday wear. Available in various sizes.', 'price' => '39.99', 'images' => json_encode(['/public/storage/uploads/blue-jeans.png']), 'category_id' => '1', 'city' => 'Casablanca'],
-            ['title' => 'Blue T-Shirt Soft & Breathable', 'description' => 'A casual blue t-shirt made from high-quality cotton, designed for ultimate comfort and a relaxed fit. Perfect for daily wear or layering.', 'price' => '19.99', 'images' => json_encode(['https://res.cloudinary.com/dxuyemo2l/image/upload/v1739030259/blue-jeans_hvbdde.png']), 'category_id' => '1', 'city' => 'Rabat'],
-            ['title' => 'Orange Chemise Elegant & Vibrant', 'description' => 'This orange chemise brings a bold and stylish touch to your wardrobe. Crafted from premium fabric, it\'s perfect for both casual and formal occasions.', 'price' => '29.99', 'images' => json_encode(['https://res.cloudinary.com/dxuyemo2l/image/upload/v1739030260/blue_tshirt_gqvftf.png']), 'category_id' => '1', 'city' => 'Tanger'],
+            ['title' => 'Classic Blue Jeans Comfortable & Stylish', 'description' => 'These premium blue jeans offer a perfect fit with durable fabric, ensuring both comfort and style. Ideal for casual outings or everyday wear. Available in various sizes.', 'price' => '39.99', 'images' => json_encode(['https://res.cloudinary.com/dxuyemo2l/image/upload/v1739030259/blue-jeans_hvbdde.png']), 'category_id' => '1', 'city' => 'Casablanca'],
+            ['title' => 'Blue T-Shirt Soft & Breathable', 'description' => 'A casual blue t-shirt made from high-quality cotton, designed for ultimate comfort and a relaxed fit. Perfect for daily wear or layering.', 'price' => '19.99', 'images' => json_encode(['https://res.cloudinary.com/dxuyemo2l/image/upload/v1739030260/blue_tshirt_gqvftf.png']), 'category_id' => '1', 'city' => 'Rabat'],
+            ['title' => 'Orange Chemise Elegant & Vibrant', 'description' => 'This orange chemise brings a bold and stylish touch to your wardrobe. Crafted from premium fabric, it\'s perfect for both casual and formal occasions.', 'price' => '29.99', 'images' => json_encode(['https://res.cloudinary.com/dxuyemo2l/image/upload/v1739030351/orange_chemise_ohtt99.png']), 'category_id' => '1', 'city' => 'Tanger'],
             [
                 'title' => 'Silk Evening Dress',
                 'description' => 'Elegant black silk evening dress with subtle beading and flowing silhouette.',
@@ -94,7 +94,7 @@ class AnnounceSeeder extends Seeder
                 'title' => 'Casual Hoodie',
                 'description' => 'Comfortable cotton blend hoodie with kangaroo pocket and drawstring hood.',
                 'price' => '44.99',
-                'images' => json_encode(['/https://res.cloudinary.com/dxuyemo2l/image/upload/v1739030384/summer_dress_floral_kqeoel.png']),
+                'images' => json_encode(['https://res.cloudinary.com/dxuyemo2l/image/upload/v1739030306/casual_hoodie_gray_bu9ifw.webp']),
                 'category_id' => '1',
                 'city' => 'Tetouan'
             ],
@@ -198,7 +198,7 @@ class AnnounceSeeder extends Seeder
                 'title' => 'Diamond Stud Earrings',
                 'description' => '14K gold diamond stud earrings with screw backs.',
                 'price' => '399.99',
-                'images' => json_encode(['/https://res.cloudinary.com/dxuyemo2l/image/upload/v1739030335/diamond_studs_gold_yu5fth.png']),
+                'images' => json_encode(['https://res.cloudinary.com/dxuyemo2l/image/upload/v1739030335/diamond_studs_gold_yu5fth.png']),
                 'category_id' => '2',
                 'city' => 'Casablanca'
             ],
@@ -246,7 +246,7 @@ class AnnounceSeeder extends Seeder
                 'title' => 'Audi Q8',
                 'description' => 'Premium SUV with sporty design and advanced technology.',
                 'price' => '75,999',
-                'images' => json_encode(['/public/storage/uploads/audi_q8_black.jpg']),
+                'images' => json_encode(['https://res.cloudinary.com/dxuyemo2l/image/upload/v1739030290/audi_q8_black_guaj3p.jpg']),
                 'category_id' => '3',
                 'city' => 'Agadir'
             ],
@@ -254,7 +254,7 @@ class AnnounceSeeder extends Seeder
                 'title' => 'BMW 7 Series',
                 'description' => 'Executive sedan with premium features and powerful performance.',
                 'price' => '86,999',
-                'images' => json_encode(['https://res.cloudinary.com/dxuyemo2l/image/upload/v1739031931/bmw_7series_metallic_gray_c8ohtp.jp']),
+                'images' => json_encode(['https://res.cloudinary.com/dxuyemo2l/image/upload/v1739031931/bmw_7series_metallic_gray_c8ohtp.jpg']),
                 'category_id' => '3',
                 'city' => 'Tetouan'
             ],
