@@ -6,6 +6,8 @@ use App\Models\Announce;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
+
 
 class ApiController extends Controller
 {
@@ -22,45 +24,49 @@ class ApiController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'title' => 'string|required',
-            'description' => 'string|required',
-            'price' => 'string|required',
-            'images' => 'required|max:5',
-            'images.*' =>  'required',
-            'city' => 'string|required',
-            'announceType' => 'required|string',
-        ]);
-        $categoryName = $request->input('announceType');
-        $category = Category::where('title', 'LIKE', $categoryName)->first();
+{
+    $validated = $request->validate([
+        'title' => 'string|required',
+        'description' => 'string|required',
+        'price' => 'string|required',
+        'images' => 'required|max:5',
+        'images.*' =>  'required',
+        'city' => 'string|required',
+        'announceType' => 'required|string',
+    ]);
 
-        if (!$category) {
-            return response()->json(['error' => 'Category not found'], 404);
-        }
+    $categoryName = $request->input('announceType');
+    $category = Category::where('title', 'LIKE', $categoryName)->first();
 
-        $uploadedFiles = [];
-        if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $file) {
-                $destinationPath = public_path('uploads');
-
-                $fileName = $file->getClientOriginalName();
-
-                $file->move($destinationPath, $fileName);
-                $uploadedFiles[] = '/uploads/' . $fileName;
-            }
-        }
-        $announcement = new Announce([
-            'title' => $validated['title'],
-            'description' => $validated['description'],
-            'price' => $validated['price'],
-            'images' => json_encode($uploadedFiles),
-            'category_id' => $category->id,
-            'city' => $validated['city']
-        ]);
-        $announcement->save();
-        return response()->json(['message' => "Announcement added successfully", 'data' => $announcement], 201);
+    if (!$category) {
+        return response()->json(['error' => 'Category not found'], 404);
     }
+
+    $uploadedFiles = [];
+    if ($request->hasFile('images')) {
+        foreach ($request->file('images') as $file) {
+            // Store the file in the public directory
+            $fileName = $file->getClientOriginalName();
+            $path = $file->storeAs('uploads', $fileName, 'public');
+            // Generate URL for the stored file
+            $uploadedFiles[] = Storage::url($path);
+        }
+    }
+
+    $announcement = new Announce([
+        'title' => $validated['title'],
+        'description' => $validated['description'],
+        'price' => $validated['price'],
+        'images' => json_encode($uploadedFiles),
+        'category_id' => $category->id,
+        'city' => $validated['city']
+    ]);
+
+    $announcement->save();
+
+    return response()->json(['message' => "Announcement added successfully", 'data' => $announcement], 201);
+}
+
 
     /**
      * Display the specified resource.
