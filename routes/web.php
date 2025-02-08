@@ -6,4 +6,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::apiResource("announces", ApiController::class);
+Route::middleware('auth:sanctum')->group(function () {
+Route::apiResource("announces", ApiController::class); });
