@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Announce;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Storage;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 
 class ApiController extends Controller
@@ -45,10 +44,8 @@ class ApiController extends Controller
     $uploadedFiles = [];
     if ($request->hasFile('images')) {
         foreach ($request->file('images') as $file) {
-            $fileName = $file->getClientOriginalName();
-            $path = $file->storeAs('uploads', $fileName, 'public');
-            $uploadedFiles[] = "/storage/" . $path; 
-
+            $uploadedFileUrl = Cloudinary::upload($file->getRealPath())->getSecurePath();
+            $uploadedFiles[] = $uploadedFileUrl;
         }
     }
 
