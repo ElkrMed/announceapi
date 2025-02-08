@@ -45,10 +45,8 @@ class ApiController extends Controller
     $uploadedFiles = [];
     if ($request->hasFile('images')) {
         foreach ($request->file('images') as $file) {
-            // Store the file in the public directory
             $fileName = $file->getClientOriginalName();
             $path = $file->storeAs('uploads', $fileName, 'public');
-            // Generate URL for the stored file
             $uploadedFiles[] = Storage::url($path);
         }
     }
