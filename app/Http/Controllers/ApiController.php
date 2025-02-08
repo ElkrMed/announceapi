@@ -6,9 +6,25 @@ use App\Models\Announce;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use Illuminate\Support\Facades\Cookie;
 
 class ApiController extends Controller
 {
+    public function setCsrfCookie(Request $request)
+    {
+        // Set the XSRF-TOKEN cookie
+        Cookie::queue(
+            'XSRF-TOKEN',
+            $request->session()->token(),
+            config('session.lifetime'),
+            '/',
+            'localhost', // Set the domain to match your frontend
+            false, // Secure flag (set to true in production)
+            true // HttpOnly flag
+        );
+
+        return response()->json(['message' => 'CSRF cookie set']);
+    }
     /**
      * Display a listing of the resource.
      */
