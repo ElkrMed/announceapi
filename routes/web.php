@@ -8,5 +8,4 @@ Route::get('/', function () {
 });
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource("announces", ApiController::class);
-    Route::get('/set-csrf-cookie', [ApiController::class, 'setCsrfCookie']);
 });

@@ -20,8 +20,6 @@ return Application::configure(basePath: dirname(__DIR__))
             'https://announceapi-production.up.railway.app/announces',
             'http://localhost:3000/announces/*',
             'http://localhost:3000/announces',
-            'https://announcereact-a19f76.gitlab.io/announces/*',
-            'https://announcereact-a19f76.gitlab.io/announces',
             'http://localhost:3000',
 
         ]);
