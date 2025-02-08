@@ -47,7 +47,8 @@ class ApiController extends Controller
         foreach ($request->file('images') as $file) {
             $fileName = $file->getClientOriginalName();
             $path = $file->storeAs('uploads', $fileName, 'public');
-            $uploadedFiles[] = Storage::url($path);
+            $uploadedFiles[] = "/storage/" . $path; 
+
         }
     }
 
