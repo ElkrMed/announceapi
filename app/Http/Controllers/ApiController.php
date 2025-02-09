@@ -6,11 +6,10 @@ use App\Models\Announce;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
-use Illuminate\Support\Facades\Cookie;
 
 class ApiController extends Controller
 {
- 
+    
     /**
      * Display a listing of the resource.
      */
