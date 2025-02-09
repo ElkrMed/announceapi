@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ["*"],
+    'allowed_origins' => ['http://localhost:3000', "https://announcereact-a19f76.gitlab.io", "http://myhannouceapp.great-site.net"],
 
     'allowed_origins_patterns' => [],
 
