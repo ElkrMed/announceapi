@@ -157,7 +157,6 @@ return [
     */
 
     'domain' => env('SESSION_DOMAIN'),
-,
 
     /*
     |--------------------------------------------------------------------------
@@ -183,7 +182,7 @@ return [
     |
     */
 
-    'http_only' => env('SESSION_HTTP_ONLY', default: false),
+    'http_only' => env('SESSION_HTTP_ONLY', true),
 
     /*
     |--------------------------------------------------------------------------
