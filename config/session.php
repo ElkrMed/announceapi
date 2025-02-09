@@ -156,7 +156,7 @@ return [
     |
     */
 
-    'domain' => env('SESSION_DOMAIN', 'announceapi-production.up.railway.app'),
+    'domain' => env('SESSION_DOMAIN'),
 ,
 
     /*
